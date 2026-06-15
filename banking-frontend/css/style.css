@@ -1,0 +1,48 @@
+/* css/style.css */
+
+/* 1. GLOBALE STANDARDS & THEME */
+:root {
+    --primary-color: #0052cc;     /* Bank Blau */
+    --success-color: #00875a;     /* Positiver Kontostand (Grün) */
+    --danger-color: #de350b;      /* Negativer Kontostand / Fehler (Rot) */
+    --background-color: #f4f5f7;
+    --card-background: #ffffff;
+    --border-radius: 8px;
+    --spacing: 20px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: var(--spacing);
+}
+
+/* 2. STANDARD-KOMPONENTEN (Überall wiederverwendbar) */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.bank-card {
+    background-color: var(--card-background);
+    padding: var(--spacing);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* 3. SEITENSPEZIFISCHE KLASSEN (Trotzdem hier in der einen Datei) */
+.dashboard {
+    display: grid;
+    gap: var(--spacing);
+}
+
+.payments-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
