@@ -1,2 +1,0 @@
-# YourAppBank
-Tolles BankProjekt
