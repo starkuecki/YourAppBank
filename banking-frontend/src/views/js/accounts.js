@@ -1,7 +1,7 @@
 // src/views/Accounts.js
-import { el } from '../utils/dom.js';
-import store from '../store.js';
-import { getAllAccounts } from '../services/accountService.js';
+import { el } from '../../utils/dom.js';
+import store from '../../store.js';
+import { getAllAccounts } from '../../services/accountService.js';
 
 export default class Accounts {
 

@@ -1,8 +1,8 @@
 // src/router.js
-import Dashboard  from './views/Dashboard.js';
-import Accounts   from './views/Accounts.js';
-import SendMoney  from './views/SendMoney.js';
-import History    from './views/History.js';
+import Dashboard  from './views/js/Dashboard.js';
+import Accounts   from './views/js/Accounts.js';
+import SendMoney  from './views/js/SendMoney.js';
+import History    from './views/js/History.js';
 
 const routes = {
     '/':          Dashboard,

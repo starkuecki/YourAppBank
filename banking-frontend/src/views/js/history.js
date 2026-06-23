@@ -1,7 +1,7 @@
 // src/views/History.js
-import { el } from '../utils/dom.js';
-import store from '../store.js';
-import { getTransactionsByAccountIban } from '../services/accountService.js';
+import { el } from '../../utils/dom.js';
+import store from '../../store.js';
+import { getTransactionsByAccountIban } from '../../services/accountService.js';
 
 const CATEGORIES = [
     'All', 'Income', 'Shopping', 'Food & Drink',

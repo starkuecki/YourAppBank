@@ -1,7 +1,7 @@
 // src/views/Dashboard.js
-import { el } from '../utils/dom.js';
-import store from '../store.js';
-import { getAllAccounts, getTransactionsByAccountIban } from '../services/accountService.js';
+import { el } from '../../utils/dom.js';
+import store from '../../store.js';
+import { getAllAccounts, getTransactionsByAccountIban } from '../../services/accountService.js';
 
 export default class Dashboard {
 
