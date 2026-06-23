@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Future Bank</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booby Bank</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <nav>
-        <a href="#/" data-link>Dashboard</a>
-        <a href="#/payments" data-link>Zahlungen</a>
-    </nav>
+    <div class="app">
+        <!-- Permanent sidebar — built once by app.js, never touched by the router -->
+        <aside class="sidebar" id="sidebar"></aside>
 
-    <main id="app"></main>
+        <!-- Router target — content is replaced on every navigation -->
+        <main class="main" id="app"></main>
+    </div>
+
+    <!-- Help bubble — always visible -->
+    <div class="help-bubble" title="Help">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+             stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/>
+            <circle cx="12" cy="17" r=".5" fill="currentColor"/>
+        </svg>
+    </div>
 
     <script type="module" src="src/app.js"></script>
 </body>
