@@ -184,7 +184,7 @@ input {
 .sidebar__brand-name {
   font-weight: 700;
   font-size: var(--fs-lg);
-  color: var(--color-white);
+  color: var(--color-accent-blue);
 }
 
 .sidebar__brand-tag {
@@ -968,4 +968,21 @@ input {
   .main {
     padding: var(--space-6);
   }
+}
+
+/* =========================================================
+   Utility classes referenced in views (per architecture doc)
+========================================================= */
+.text-success {
+  color: var(--color-positive);
+}
+
+.text-danger {
+  color: var(--destructive);
+}
+
+/* Skeleton loading pulse */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
 }
