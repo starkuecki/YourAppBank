@@ -163,7 +163,36 @@ async function bootstrap() {
     
     // 2. Rufe den Router das erste Mal manuell auf, um die Startseite anzuzeigen
     router();
+
+    initSupportModal();
+}
+
+function initSupportModal() {
+    const helpBtn = document.getElementById('helpBtn');
+    const supportModal = document.getElementById('supportModal');
+    const closeHelpBtn = document.getElementById('closeHelpBtn');
+
+    // Falls die Elemente auf der aktuellen Seite nicht existieren, breche ab
+    if (!helpBtn || !supportModal || !closeHelpBtn) return;
+
+    // Pop-up öffnen
+    helpBtn.addEventListener('click', () => {
+        supportModal.classList.add('is-open');
+    });
+
+    // Pop-up über das 'X' schließen
+    closeHelpBtn.addEventListener('click', () => {
+        supportModal.classList.remove('is-open');
+    });
+
+    // Pop-up schließen, wenn man außerhalb des Fensters klickt
+    supportModal.addEventListener('click', (event) => {
+        if (event.target === supportModal) {
+            supportModal.classList.remove('is-open');
+        }
+    });
 }
 
 // App starten
 bootstrap();
+
