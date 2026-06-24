@@ -43,14 +43,6 @@ export default class Dashboard {
             this._skeleton('account-card account-card--gray'),
         );
 
-        // Quick action buttons
-        const actions = el('section', { class: 'quick-actions' },
-            this._actionBtn('Send',      '#/send'),
-            this._actionBtn('Add Money', null),
-            this._actionBtn('Pay Bill',  null),
-            this._actionBtn('More',      null),
-        );
-
         // Chart panel (left side of bottom grid)
         this._chartRoot = el('div', { id: 'chart-root' });
 
@@ -87,7 +79,6 @@ export default class Dashboard {
         return el('div', {},
             header,
             this._accountCards,
-            actions,
             grid,
         );
     }

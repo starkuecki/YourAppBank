@@ -45,7 +45,6 @@ function buildSidebar() {
         { route: '/accounts', label: 'Accounts',    icon: navIcon('accounts')  },
         { route: '/send',     label: 'Send Money',  icon: navIcon('send')      },
         { route: '/history',  label: 'History',     icon: navIcon('history')   },
-        { route: '/settings', label: 'Settings',    icon: navIcon('settings')  },
     ];
 
     navItems.forEach(({ route, label, icon }) => {
