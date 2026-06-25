@@ -136,7 +136,7 @@ export default class History {
     }
 
     _txRow(tx) {
-        const isIncome = (tx.amount ?? 0) > 0;
+        const isIncome = tx.transactionType === 'deposit';
 
         const icon = el('div',
             { class: `tx-row__icon${isIncome ? ' tx-row__icon--income' : ''}` },

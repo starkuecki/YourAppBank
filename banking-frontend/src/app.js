@@ -81,7 +81,8 @@ function updateSidebarUser() {
     const customer = store.currentCustomer;
     if (!customer) return;
 
-    const initials = `${customer.firstName?.[0] ?? ''}${customer.lastName?.[0] ?? ''}`.toUpperCase();
+    const nameParts = (customer.name || '').split(' ');
+    const initials = nameParts.map(p => p[0]).join('').slice(0, 2).toUpperCase();
 
     const avatar = document.createElement('div');
     avatar.className = 'avatar';

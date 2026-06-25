@@ -91,7 +91,7 @@ export default class Dashboard {
         // Fill in the greeting name from the store (already loaded by app.js)
         const customer = store.currentCustomer;
         if (customer) {
-            this._greetName.textContent = customer.firstName || 'there';
+            this._greetName.textContent = customer.name?.split(' ')[0] || 'there';
         }
 
         try {
@@ -253,7 +253,7 @@ export default class Dashboard {
 
     // Builds a single transaction row — same structure used in History.js
     _txRow(tx) {
-        const isIncome = (tx.amount ?? 0) > 0;
+        const isIncome = tx.transactionType === 'deposit';
 
         const icon = el('div',
             { class: `tx-row__icon${isIncome ? ' tx-row__icon--income' : ''}` },
@@ -286,12 +286,6 @@ export default class Dashboard {
         const s = el('div', { class: extraClasses });
         s.style.cssText = 'min-height:80px;background:var(--secondary);border-radius:var(--radius);animation:pulse 1.5s ease-in-out infinite;';
         return s;
-    }
-
-    _actionBtn(label, route) {
-        const btn = el('button', { class: 'btn btn--outline' }, label);
-        if (route) btn.addEventListener('click', () => { window.location.hash = route; });
-        return btn;
     }
 
     _formatCurrency(amount) {
