@@ -171,6 +171,11 @@ export default class Dashboard {
         // Build a running balance series
         let running = 0;
         const series = sorted.map(tx => {
+             if (tx.transactionType === 'deposit') {
+                running += tx.amount ?? 0;
+            } else {
+                running -= tx.amount ?? 0;
+            }
             running += tx.amount ?? 0;
             return {
                 label: this._shortDate(tx.timestamp),

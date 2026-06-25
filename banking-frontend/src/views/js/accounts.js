@@ -77,31 +77,29 @@ export default class Accounts {
 
             const receiveBtn = el('button', { class: 'btn btn--outline btn--sm' }, '↙ Receive');
 
+            // Display name — API gives "current" or "savings", we make it readable
+            const displayType = acc.accountType === 'current' ? 'Current Account' : 'Savings Account';
+
+            // Extra badge — savings accounts have interestRate, current have overdraftLimit
+            const nameLine = el('div', { class: 'account-row__name-line' },
+                el('span', { class: 'account-row__name' }, displayType),
+                el('span', { class: 'badge badge--active' }, '✓ Active'),
+            );
+            if (acc.interestRate != null) {
+                nameLine.appendChild(el('span', { class: 'badge badge--apy' }, `APY ${acc.interestRate}%`));
+            }
+
             const row = el('div', { class: 'account-row' },
                 el('div', {},
-                    el('div', { class: 'account-row__name-line' },
-                        el('span', { class: 'account-row__name' },
-                            acc.accountName || acc.accountType || 'Account'
-                        ),
-                        el('span', { class: 'badge badge--active' }, '✓ Active'),
-                        acc.apy
-                            ? el('span', { class: 'badge badge--apy' }, `APY ${acc.apy}%`)
-                            : null,
-                    ),
+                    nameLine,
                     el('div', { class: 'account-row__iban' }, acc.iban || '—'),
-                    el('div', { class: 'account-row__type' },
-                        `${acc.accountType || 'Account'} · ${acc.currency || 'USD'}`
-                    ),
+                    el('div', { class: 'account-row__type' }, `${displayType} · EUR`),
                     el('div', { class: 'account-row__actions' }, sendBtn, receiveBtn),
                 ),
                 el('div', { class: 'account-row__balance' },
                     this._formatCurrency(acc.balance ?? 0)
                 ),
             );
-
-            // el() ignores null children — safe to pass the optional APY badge
-            // but we need to remove any null entries manually here
-            row.querySelectorAll('null').forEach(n => n.remove());
 
             this._listEl.appendChild(row);
         });
