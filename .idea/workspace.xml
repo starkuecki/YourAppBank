@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a6fe7621-620c-40af-91dc-2ffccac62b22" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BoobyBankOrdner.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/boobybank/BoobyBankApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/boobybank/BoobyBankApplicationTests.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/requests/accounts.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/AccountDTOMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/accounts/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/accounts/AccountMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/accounts/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/entity/accounts/AccountEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/entity/accounts/AccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/AccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/AccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/CurrentAccountController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/CurrentAccountDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/SavingsAccountController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/accounts/SavingsAccountDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/customers/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/customers/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/customers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/customers/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,29 +35,41 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1,
-  "fromUser": false
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "LukStar2018"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/starkuecki/YourAppBank.git",
+    "accountId": "208e688e-5de5-4663-9f3e-e19a334e488a"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3FJ0p3zQ5r3Nzehtn0gpIgrNFbO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "Backend",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/stani/Desktop/Grundlagen der Softwareentwicklung/Challenge3/YourAppBank",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Backend-vereinfachen-und-implemeniteren-von-accounts&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stani/Desktop/Grundlagen der Softwareentwicklung/Challenge3/YourAppBank&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -67,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1781778044379</updated>
       <workItem from="1781778045433" duration="148000" />
+      <workItem from="1782385140074" duration="4000" />
     </task>
     <servers />
   </component>

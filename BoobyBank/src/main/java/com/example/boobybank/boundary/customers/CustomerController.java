@@ -35,7 +35,9 @@ public class CustomerController {
 
 
     @GetMapping("/{id}")
-    public CustomerDTO getCustomer(@PathVariable String id) {
+    public CustomerDTO getCustomer(
+            @PathVariable String id
+    ) {
         var uuid = UUID.fromString(id);
 
         return mapper.map(customersService.getCustomer(uuid));

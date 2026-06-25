@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.jspecify.annotations.NonNull;
 
 import java.util.UUID;
 
@@ -28,15 +27,5 @@ public class Customer {
     @NotNull
     @Size(min = 2, max = 100)
     private final String city;
-
-
-    @NonNull
-    public static Customer copyFrom(@NonNull Customer customer) {
-        return new Customer(
-                customer.getId(),
-                customer.getName(),
-                customer.getCity()
-        );
-    }
 
 }

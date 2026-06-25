@@ -1,0 +1,52 @@
+### GET request to example server
+GET http://localhost:8080/v1/accounts
+Accept: application/json
+
+### GET request to example server
+GET http://localhost:8080/v1/accounts?ownerId=767a7790-7a7b-4fc0-b352-aaffc5a987c0
+Accept: application/json
+
+###
+GET http://localhost:8080/v1/accounts/DE12345678901234567869
+Accept: application/json
+
+###
+POST http://localhost:8080/v1/accounts
+Accept: application/json
+Content-Type: application/json
+
+{
+  "iban": "DE12345678901234567869",
+  "accountType": "current",
+  "ownerId": "767a7790-7a7b-4fc0-b352-aaffc5a987c9"
+}
+
+####
+DELETE http://localhost:8080/v1/accounts/DE12345678901234567869
+
+
+###
+GET http://localhost:8080/v1/accounts/DE12345678901234567869/transactions
+Accept: application/json
+
+###
+POST http://localhost:8080/v1/accounts/DE12345678901234567869/deposit
+Accept: application/json
+Content-Type: application/json
+
+{
+  "amount": 100.0,
+  "purpose": "Test Moneten depo",
+  "timestamp": "jetzt"
+}
+
+###
+POST http://localhost:8080/v1/accounts/DE12345678901234567869/withdrawal
+Accept: application/json
+Content-Type: application/json
+
+{
+  "amount": 50.0,
+  "purpose": "Test Moneten withdr",
+  "timestamp": "jetzt"
+}
