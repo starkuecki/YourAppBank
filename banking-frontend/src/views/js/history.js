@@ -3,10 +3,7 @@ import { el } from '../../utils/dom.js';
 import store from '../../store.js';
 import { getTransactionsByAccountIban } from '../../services/accountService.js';
 
-const CATEGORIES = [
-    'All', 'Income', 'Shopping', 'Food & Drink',
-    'Utilities', 'Transport', 'Entertainment', 'Transfer',
-];
+const CATEGORIES = ['All', 'Deposits', 'Withdrawals'];
 
 export default class History {
 
@@ -112,8 +109,10 @@ export default class History {
         const cat   = this._activeCategory;
 
         const filtered = this._allTx.filter(tx => {
-            const matchesCat    = cat === 'All'
-                || (tx.category || '').toLowerCase() === cat.toLowerCase();
+            const matchesCat =
+                cat === 'All' ||
+                (cat === 'Deposits'    && tx.transactionType === 'deposit') ||
+                (cat === 'Withdrawals' && tx.transactionType === 'withdrawal');
             const description   = (tx.purpose || tx.description || '').toLowerCase();
             const matchesSearch = !query || description.includes(query);
             return matchesCat && matchesSearch;
@@ -136,7 +135,7 @@ export default class History {
     }
 
     _txRow(tx) {
-        const isIncome = (tx.amount ?? 0) > 0;
+        const isIncome = tx.transactionType === 'deposit';
 
         const icon = el('div',
             { class: `tx-row__icon${isIncome ? ' tx-row__icon--income' : ''}` },
@@ -154,7 +153,7 @@ export default class History {
                 tx.purpose || tx.description || 'Transaction'
             ),
             el('div', { class: 'tx-row__meta' },
-                [tx.category, dateStr].filter(Boolean).join(' · ')
+                [tx.transactionType, dateStr].filter(Boolean).join(' · ')
             ),
         );
 
