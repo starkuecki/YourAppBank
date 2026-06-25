@@ -92,7 +92,7 @@ function updateSidebarUser() {
 
     const name = document.createElement('div');
     name.className = 'sidebar__user-name';
-    name.textContent = `${customer.firstName} ${customer.lastName}`;
+    name.textContent = customer.name;
 
     const plan = document.createElement('div');
     plan.className = 'sidebar__user-plan';
