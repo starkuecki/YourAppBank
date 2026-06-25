@@ -44,7 +44,8 @@ public class AccountDTOMapper {
         return new Deposit(
                 depositDTO.getAmount(),
                 depositDTO.getPurpose(),
-                depositDTO.getTimestamp()
+                depositDTO.getTimestamp(),
+                "deposit"
         );
     }
 
@@ -60,7 +61,8 @@ public class AccountDTOMapper {
         return new Withdrawal(
                 withdrawalDTO.getAmount(),
                 withdrawalDTO.getPurpose(),
-                withdrawalDTO.getTimestamp()
+                withdrawalDTO.getTimestamp(),
+                "withdrawal"
         );
     }
 

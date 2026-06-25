@@ -1,7 +1,7 @@
 // src/views/SendMoney.js
 import { el } from '../../utils/dom.js';
 import store from '../../store.js';
-import { getAllAccounts, postWithdrawal } from '../../services/accountService.js';
+import { getAllAccounts, getAccountByIban, postWithdrawal, postDeposit } from '../../services/accountService.js';
 
 export default class SendMoney {
 
@@ -151,8 +151,27 @@ export default class SendMoney {
         this._statusMsg.className = '';
 
         try {
+            // 0. Zielkonto vorher validieren — bevor irgendwas abgebucht wird
+            try {
+                await getAccountByIban(toIban);
+            } catch {
+                throw new Error(`Recipient account ${toIban} not found.`);
+            }
+
+            // 1. Geld beim Sender abbuchen
             await postWithdrawal(fromIban, amount, purpose);
 
+            // 2. Geld beim Empfänger gutschreiben
+            try {
+                await postDeposit(toIban, amount, purpose);
+            } catch (depositErr) {
+                // Withdrawal war schon erfolgreich, Deposit ist fehlgeschlagen.
+                // Das Geld ist jetzt "verschwunden" — klare Fehlermeldung statt Stille.
+                console.error('Kritisch: Withdrawal erfolgreich, aber Deposit fehlgeschlagen.', depositErr);
+                throw new Error(
+                    `Withdrawal succeeded but deposit failed. Please contact support — your money may be stuck. (${depositErr.message})`
+                );
+            }
             this._statusMsg.className = 'text-success';
             this._statusMsg.textContent = `✓ $${amount.toFixed(2)} sent to ${toIban} successfully!`;
 

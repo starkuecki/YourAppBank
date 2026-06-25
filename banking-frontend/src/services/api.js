@@ -6,7 +6,7 @@ class ApiService {
 
     // Hilfsmethode, um die Standard-Header inklusive JWT-Token zu generieren
     #getHeaders() {
-        const headers = {
+        return {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         };

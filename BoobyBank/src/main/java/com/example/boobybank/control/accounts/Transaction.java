@@ -20,4 +20,7 @@ public class Transaction {
 
     @NotNull
     private String timestamp;
+
+    @NotNull
+    private String transactionType;
 }
