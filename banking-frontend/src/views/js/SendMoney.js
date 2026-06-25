@@ -122,8 +122,9 @@ export default class SendMoney {
             // Populate the FROM dropdown with real accounts
             this._fromSelect.innerHTML = '';
             accounts.forEach(acc => {
+                const displayType = acc.accountType === 'current' ? 'Current Account' : 'Savings Account';
                 const opt = el('option', { value: acc.iban },
-                    `${acc.accountName || acc.accountType || 'Account'} – ${this._formatCurrency(acc.balance ?? 0)}`
+                    `${displayType} – ${this._formatCurrency(acc.balance ?? 0)}`
                 );
                 // Pre-select whichever account the user clicked Send from
                 if (store.selectedAccount?.iban === acc.iban) {
