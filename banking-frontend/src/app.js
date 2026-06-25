@@ -134,7 +134,7 @@ export function navIcon(name) {
 async function bootstrap() {
     buildSidebar();
     // Gibt es ein Token oder eine gespeicherte Customer-ID im Browser?
-    const savedCustomerId = "c4f8d1c2-7b6e-4a91-9f3d-2e8b5a7c1d44"; // Test-ID
+    const savedCustomerId = "11111111-1111-1111-1111-111111111111"; // Test-ID
 
     if (savedCustomerId) {
         try {

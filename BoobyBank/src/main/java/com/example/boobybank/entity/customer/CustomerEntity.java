@@ -22,7 +22,7 @@ public class CustomerEntity {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.UUID)
+    //@GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @NotNull

@@ -27,7 +27,7 @@ export function router() {
 
     // 2. Hier wird deine init()-Funktion für die API-Daten gestartet!
     if (viewInstance.init) {
-        //viewInstance.init();
+        viewInstance.init();
     }
 
     // Keep sidebar nav links visually in sync with the active route
