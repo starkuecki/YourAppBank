@@ -38,46 +38,19 @@ public class DataInitializer {
         if (customersService.getCustomerCount() > 0) {
             return;
         }
-/*
-        log.info("Initializing customers...");
-        Customer customer1 = new Customer("Max Musterfrau", "Hamburg");
-        Customer customer2 = new Customer("Peter Mustermann", "Berlin");
 
-        customersService.createCustomer(customer1);
-        customersService.createCustomer(customer2);
-        log.info("Customers initialized");*/
-
-        String hash = "";
-        try {
-            String password = "1";
-
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-
-            // Bytes in lesbaren Hex-String umwandeln
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hashBytes) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-                hash = hexString.toString();
-            }
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(e.getMessage());
-        }
-
-
+        HashUtil hasher = new HashUtil();
 
         CustomerEntity customerEntity1 = new CustomerEntity(
                 UUID.fromString("11111111-1111-1111-1111-111111111111"),
-                "Max",
-                "Beispielstadt",
-                hash
+                "Tim",
+                "Beispielstadt1",
+                hasher.sha256("1")
         );
         cRepo.save(customerEntity1);
 
         AccountEntity accountEntity1 = new AccountEntity(
-                "DE00000000000000000001",
+                "DE10000000000000000001",
                 0,
                 "current",
                 UUID.fromString("11111111-1111-1111-1111-111111111111"),
@@ -86,7 +59,7 @@ public class DataInitializer {
         aRepo.save(accountEntity1);
 
         accountService.deposit(
-                "DE00000000000000000001",
+                "DE10000000000000000001",
                 new Deposit(
                         100.0,
                         "Einzahlungsbeispiel1",
@@ -96,7 +69,7 @@ public class DataInitializer {
         );
 
         accountService.withdrawal(
-                "DE00000000000000000001",
+                "DE10000000000000000001",
                 new Withdrawal(
                         10.0,
                         "Auszahlungsbeispiel1",
@@ -106,7 +79,7 @@ public class DataInitializer {
         );
 
         accountService.deposit(
-                "DE00000000000000000001",
+                "DE10000000000000000001",
                 new Deposit(
                         50.0,
                         "Einzahlungsbeispiel2",
@@ -116,7 +89,7 @@ public class DataInitializer {
         );
 
         accountService.withdrawal(
-                "DE00000000000000000001",
+                "DE10000000000000000001",
                 new Withdrawal(
                         30.0,
                         "Auszahlungsbeispiel2",
@@ -126,13 +99,84 @@ public class DataInitializer {
         );
 
         AccountEntity accountEntity2 = new AccountEntity(
-                "DE00000000000000000002",
+                "DE10000000000000000002",
                 0,
                 "savings",
                 UUID.fromString("11111111-1111-1111-1111-111111111111"),
                 new ArrayList<>()
         );
         aRepo.save(accountEntity2);
+
+
+
+
+
+
+        CustomerEntity customerEntity2 = new CustomerEntity(
+                UUID.fromString("22222222-2222-2222-2222-222222222222"),
+                "Tom",
+                "Beispielstadt2",
+                hasher.sha256("2")
+        );
+        cRepo.save(customerEntity2);
+
+        AccountEntity accountEntity3 = new AccountEntity(
+                "DE20000000000000000001",
+                0,
+                "current",
+                UUID.fromString("22222222-2222-2222-2222-222222222222"),
+                new ArrayList<>()
+        );
+        aRepo.save(accountEntity3);
+
+        accountService.deposit(
+                "DE20000000000000000001",
+                new Deposit(
+                        12.0,
+                        "Einzahlungsbeispiel1",
+                        "2026-06-25T23:33:00.000Z",
+                        "deposit"
+                )
+        );
+
+        accountService.withdrawal(
+                "DE20000000000000000001",
+                new Withdrawal(
+                        1.0,
+                        "Auszahlungsbeispiel1",
+                        "2026-06-25T23:34:00.000Z",
+                        "withdrawal"
+                )
+        );
+
+        accountService.deposit(
+                "DE20000000000000000001",
+                new Deposit(
+                        3.0,
+                        "Einzahlungsbeispiel2",
+                        "2026-06-25T23:35:00.000Z",
+                        "deposit"
+                )
+        );
+
+        accountService.withdrawal(
+                "DE20000000000000000001",
+                new Withdrawal(
+                        2.0,
+                        "Auszahlungsbeispiel2",
+                        "2026-06-25T23:36:00.000Z",
+                        "withdrawal"
+                )
+        );
+
+        AccountEntity accountEntity4 = new AccountEntity(
+                "DE20000000000000000002",
+                0,
+                "savings",
+                UUID.fromString("22222222-2222-2222-2222-222222222222"),
+                new ArrayList<>()
+        );
+        aRepo.save(accountEntity4);
 
     }
 

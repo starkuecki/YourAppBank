@@ -115,7 +115,7 @@ export default class SendMoney {
         try {
             let accounts = store.accounts;
             if (!accounts || accounts.length === 0) {
-                accounts = await getAllAccounts(store.currentCustomer?.id);
+                accounts = await getAllAccounts(store.currentCustomer.id);
                 store.accounts = accounts;
             }
 

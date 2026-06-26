@@ -1,9 +1,23 @@
 // src/views/js/login.js
 import store from '../../store.js';
-import { getAllCustomers } from '../../services/customerService.js';
+import {getAllCustomers} from '../../services/customerService.js';
+import {getAllAccounts} from "../../services/accountService.js";
+import {buildSidebar} from "../../app.js"
+
+
+async function sha256(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 export default class Login {
-    constructor() { this.container = null; }
+    constructor() {
+        this.container = null;
+        store.clear();
+    }
 
     render() {
         this.container = document.createElement('div');
@@ -15,11 +29,11 @@ export default class Login {
                 <form id="login-form">
                     <div class="field-block">
                         <label class="field-label">Benutzername / Name</label>
-                        <input type="text" id="login-username" class="text-input" value="Max Musterfrau" required>
+                        <input type="text" id="login-username" class="text-input" value="" required>
                     </div>
                     <div class="field-block">
                         <label class="field-label">Passwort</label>
-                        <input type="password" id="login-password" class="text-input" value="chillig123" required>
+                        <input type="password" id="login-password" class="text-input" value="" required>
                     </div>
                     <button type="submit" class="btn btn--primary" style="width: 100%; justify-content: center; margin-top: 16px;">Einloggen →</button>
                 </form>
@@ -28,6 +42,7 @@ export default class Login {
         `;
         return this.container;
     }
+
 
     async init() {
         const form = this.container.querySelector('#login-form');
@@ -38,17 +53,24 @@ export default class Login {
             errorDiv.textContent = "";
 
             const usernameInput = this.container.querySelector('#login-username').value.trim();
+            const passwordInput = this.container.querySelector('#login-password').value.trim();
+            const passwordHash = await sha256(passwordInput);
 
             try {
-                //const customers = await getAllCustomers();
-                //const customer = customers.find(c => c.name.toLowerCase() === usernameInput.toLowerCase());
+                const customers = await getAllCustomers();
+                const customer = customers.find(
+                    c => c.name.toLowerCase() === usernameInput.toLowerCase() &&
+                        c.password === passwordHash
+                );
 
-                if (true) {
-                    // OHNE TOKEN: Nur das Kundenobjekt wird zentral abgelegt
-                    //store.currentCustomer = customer; 
+                if (customer) {
+                    //OHNE TOKEN: Nur das Kundenobjekt wird zentral abgelegt
+                    store.currentCustomer = customer;
+                    store.accounts = await getAllAccounts(customer.id);
+                    buildSidebar();
                     window.location.hash = '/dashboard';
                 } else {
-                    errorDiv.textContent = "Benutzername existiert nicht.";
+                    errorDiv.textContent = "Benutzername oder Password sind falsch.";
                 }
             } catch (err) {
                 errorDiv.textContent = "Fehler bei der Authentifizierung.";
