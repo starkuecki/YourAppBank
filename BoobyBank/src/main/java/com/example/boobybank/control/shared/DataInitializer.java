@@ -16,6 +16,9 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -44,11 +47,32 @@ public class DataInitializer {
         customersService.createCustomer(customer2);
         log.info("Customers initialized");*/
 
+        String hash = "";
+        try {
+            String password = "1";
+
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            // Bytes in lesbaren Hex-String umwandeln
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashBytes) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+                hash = hexString.toString();
+            }
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(e.getMessage());
+        }
+
+
 
         CustomerEntity customerEntity1 = new CustomerEntity(
                 UUID.fromString("11111111-1111-1111-1111-111111111111"),
                 "Max",
-                "Beispielstadt"
+                "Beispielstadt",
+                hash
         );
         cRepo.save(customerEntity1);
 

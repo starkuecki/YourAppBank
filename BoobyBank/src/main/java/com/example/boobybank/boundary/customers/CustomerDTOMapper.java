@@ -13,7 +13,8 @@ public class CustomerDTOMapper {
         return new CustomerDTO(
                 customer.getId().toString(),
                 customer.getName(),
-                customer.getCity()
+                customer.getCity(),
+                customer.getPassword()
         );
     }
 
@@ -22,7 +23,8 @@ public class CustomerDTOMapper {
         return new Customer(
                 id == null ? null : UUID.fromString(id),
                 customerDTO.getName(),
-                customerDTO.getCity()
+                customerDTO.getCity(),
+                customerDTO.getPassword()
         );
     }
 

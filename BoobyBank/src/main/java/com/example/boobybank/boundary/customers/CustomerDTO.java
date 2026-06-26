@@ -19,5 +19,7 @@ public class CustomerDTO {
     @NotNull
     @Size(min = 2, max = 100)
     private String city;
+    @NotNull
+    private String password;
 
 }

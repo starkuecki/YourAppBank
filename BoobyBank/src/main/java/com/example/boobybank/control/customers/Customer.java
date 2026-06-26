@@ -28,4 +28,7 @@ public class Customer {
     @Size(min = 2, max = 100)
     private final String city;
 
+    @NotNull
+    private String password;
+
 }
