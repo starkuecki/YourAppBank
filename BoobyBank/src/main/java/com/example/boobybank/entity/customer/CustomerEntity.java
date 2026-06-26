@@ -33,6 +33,9 @@ public class CustomerEntity {
     @Size(min = 2, max = 100)
     private String city;
 
+    @NotNull
+    private String password;
+
 
     @Override
     public final boolean equals(Object o) {

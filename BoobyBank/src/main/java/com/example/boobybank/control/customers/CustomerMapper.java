@@ -14,7 +14,9 @@ public class CustomerMapper {
         return new Customer(
                 entity.getId(),
                 entity.getName(),
-                entity.getCity());
+                entity.getCity(),
+                entity.getPassword()
+        );
     }
 
 
@@ -23,7 +25,8 @@ public class CustomerMapper {
         return new CustomerEntity(
                 id,
                 customer.getName(),
-                customer.getCity()
+                customer.getCity(),
+                customer.getPassword()
         );
     }
 

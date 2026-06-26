@@ -35,9 +35,9 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "amount": 7.0,
+  "amount": 700000.0,
   "purpose": "Test Post",
-  "timestamp": "2026-06-25T23:39:00.000Z"
+  "timestamp": "2026-06-26T23:39:00.000Z"
 }
 
 ###
