@@ -41,7 +41,7 @@ function buildSidebar() {
     nav.className = 'sidebar__nav';
 
     const navItems = [
-        { route: '/',         label: 'Dashboard',   icon: navIcon('dashboard') },
+        { route: '/dashboard',label: 'Dashboard',   icon: navIcon('dashboard') },
         { route: '/accounts', label: 'Accounts',    icon: navIcon('accounts')  },
         { route: '/send',     label: 'Send Money',  icon: navIcon('send')      },
         { route: '/history',  label: 'History',     icon: navIcon('history')   },

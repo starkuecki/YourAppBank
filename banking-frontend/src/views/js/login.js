@@ -40,13 +40,13 @@ export default class Login {
             const usernameInput = this.container.querySelector('#login-username').value.trim();
 
             try {
-                const customers = await getAllCustomers();
-                const customer = customers.find(c => c.name.toLowerCase() === usernameInput.toLowerCase());
+                //const customers = await getAllCustomers();
+                //const customer = customers.find(c => c.name.toLowerCase() === usernameInput.toLowerCase());
 
-                if (customer) {
+                if (true) {
                     // OHNE TOKEN: Nur das Kundenobjekt wird zentral abgelegt
-                    store.currentCustomer = customer; 
-                    window.location.hash = '#/';
+                    //store.currentCustomer = customer; 
+                    window.location.hash = '/dashboard';
                 } else {
                     errorDiv.textContent = "Benutzername existiert nicht.";
                 }

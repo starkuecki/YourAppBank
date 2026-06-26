@@ -3,9 +3,11 @@ import Dashboard  from './views/js/Dashboard.js';
 import Accounts   from './views/js/Accounts.js';
 import SendMoney  from './views/js/SendMoney.js';
 import History    from './views/js/History.js';
+import Login      from './views/js/Login.js';
 
 const routes = {
-    '/':          Dashboard,
+    '/':          Login,      
+    '/dashboard': Dashboard,
     '/accounts':  Accounts,
     '/send':      SendMoney,
     '/history':   History,
