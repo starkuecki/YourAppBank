@@ -104,6 +104,8 @@ export default class Dashboard {
 
             this._renderAccountCards(accounts);
 
+            store.selectedAccount(store.accounts[1]);
+
             // Load transactions for the primary (selected) account
             const primary = store.selectedAccount;
             if (primary?.iban) {
@@ -127,12 +129,14 @@ export default class Dashboard {
 
     _renderAccountCards(accounts) {
         this._accountCards.innerHTML = '';
-        const variants = ['dark', 'blue', 'gray'];
+        const variants = ['dark', 'blue'];
 
         accounts.forEach((acc, i) => {
             const variant = variants[i % variants.length];
 
-            const card = el('div', { class: `account-card account-card--${variant}` },
+            const isSelected = store.selectedAccount?.iban === acc.iban;
+
+            const card = el('div', { class: `account-card account-card--${variant}${isSelected ? ` account-card--active` : ''}` },
                 el('div', { class: 'account-card__top' },
                     el('span', {}, (acc.accountType || 'Account').toUpperCase()),
                     el('span', {}, `•••• ${String(acc.iban || '').slice(-4)}`),
@@ -141,6 +145,12 @@ export default class Dashboard {
                     this._formatCurrency(acc.balance ?? 0)
                 ),
             );
+
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                store.selectedAccount = acc;
+                this._renderAccountCards(accounts);
+            });
 
             this._accountCards.appendChild(card);
         });
@@ -256,7 +266,7 @@ export default class Dashboard {
         this._chartRoot.appendChild(svg);
     }
 
-    // Builds a single transaction row — same structure used in History.js
+    // Builds a single transaction row 
     _txRow(tx) {
         const isIncome = tx.transactionType === 'deposit';
 

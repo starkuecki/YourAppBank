@@ -386,9 +386,9 @@ input {
   color: var(--color-text);
 }
 
-.account-card--gray {
-  background: var(--color-card-gray);
-  color: var(--color-text);
+
+.account-card--active {
+  border-inline: 4px solid var(--blue-mid);
 }
 
 .account-card__top {
