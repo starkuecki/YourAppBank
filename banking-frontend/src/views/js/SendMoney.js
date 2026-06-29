@@ -91,16 +91,9 @@ export default class SendMoney {
             this._statusMsg,
         );
 
-        // Right side info callout
-        const callout = el('div', { class: 'info-callout' },
-            el('div', { class: 'info-callout__title' }, 'Quick info 👀'),
-            el('div', { class: 'info-callout__line' }, 'Domestic: instant & free 🎉'),
-            el('div', { class: 'info-callout__line' }, 'International: 1-2 days, 0.5% fee (min $2)'),
-        );
-
         const grid = el('section', { class: 'send-grid' },
             form,
-            el('aside', {}, callout),
+            el('aside', {}),
         );
 
         return el('div', {},

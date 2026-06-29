@@ -102,26 +102,36 @@ export default class Dashboard {
                 store.accounts = accounts;
             }
 
+            // Prefer the current account as the initially selected one;
+            // fall back to the first account if none is marked 'current'.
+            store.selectedAccount =
+                accounts.find(acc => acc.accountType === 'current')
+                ?? accounts[0];
+
             this._renderAccountCards(accounts);
 
-            store.selectedAccount(store.accounts[1]);
+            await this.loadTransactions()
 
-            // Load transactions for the primary (selected) account
-            const primary = store.selectedAccount;
-            if (primary?.iban) {
-                const transactions = await getTransactionsByAccountIban(primary.iban);
-                const sorted = [...transactions].sort(
-                    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-                );
-                this._renderRecentList(sorted.slice(0, 4));
-                this._renderChart(sorted);
-            }
+
         } catch (err) {
             console.error('Dashboard init error:', err);
             this._recentList.innerHTML = '';
             this._recentList.appendChild(
                 el('p', { class: 'text-danger' }, 'Could not load data.')
             );
+        }
+    }
+
+    async loadTransactions() {
+        // Load transactions for the primary (selected) account
+        const primary = store.selectedAccount;
+        if (primary.iban) {
+            const transactions = await getTransactionsByAccountIban(primary.iban);
+            const sorted = [...transactions].sort(
+                (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+            );
+            this._renderRecentList(sorted.slice(0, 4));
+            this._renderChart(sorted);
         }
     }
 
@@ -134,7 +144,7 @@ export default class Dashboard {
         accounts.forEach((acc, i) => {
             const variant = variants[i % variants.length];
 
-            const isSelected = store.selectedAccount?.iban === acc.iban;
+            const isSelected = store.selectedAccount.iban === acc.iban;
 
             const card = el('div', { class: `account-card account-card--${variant}${isSelected ? ` account-card--active` : ''}` },
                 el('div', { class: 'account-card__top' },
@@ -149,6 +159,7 @@ export default class Dashboard {
             card.style.cursor = 'pointer';
             card.addEventListener('click', () => {
                 store.selectedAccount = acc;
+                this.loadTransactions();
                 this._renderAccountCards(accounts);
             });
 
@@ -172,6 +183,7 @@ export default class Dashboard {
     }
 
     _renderChart(transactions) {
+        this._chartRoot.innerHTML = '';
         if (!transactions.length) return;
 
         const sorted = [...transactions].sort(
@@ -262,7 +274,7 @@ export default class Dashboard {
             svg.appendChild(t);
         });
 
-        this._chartRoot.innerHTML = '';
+
         this._chartRoot.appendChild(svg);
     }
 
