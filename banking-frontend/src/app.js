@@ -79,7 +79,7 @@ export function buildSidebar() {
     sidebar.appendChild(footer);
 }
 
-function updateSidebarUser() {
+export function updateSidebarUser() {
     const footer = document.getElementById('sidebar-footer');
     if (!footer) return;
     footer.innerHTML = '';

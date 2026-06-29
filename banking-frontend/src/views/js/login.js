@@ -2,7 +2,7 @@
 import store from '../../store.js';
 import {getAllCustomers} from '../../services/customerService.js';
 import {getAllAccounts} from "../../services/accountService.js";
-import {buildSidebar} from "../../app.js"
+import {buildSidebar, updateSidebarUser} from "../../app.js"
 
 
 async function sha256(text) {
@@ -68,6 +68,7 @@ export default class Login {
                     store.currentCustomer = customer;
                     store.accounts = await getAllAccounts(customer.id);
                     buildSidebar();
+                    updateSidebarUser();
                     window.location.hash = '/dashboard';
                 } else {
                     errorDiv.textContent = "Benutzername oder Password sind falsch.";
