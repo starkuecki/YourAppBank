@@ -8,7 +8,7 @@ import { getAllAccounts }  from './services/accountService.js';
 // The sidebar is permanent shell UI — it lives outside #app so the router
 // never wipes it. We build it once here with createElement (same rule as views).
 
-function buildSidebar() {
+function buildLogo(){
     const sidebar = document.getElementById('sidebar');
     if (!sidebar) return;
 
@@ -36,12 +36,19 @@ function buildSidebar() {
     brand.appendChild(logo);
     brand.appendChild(brandText);
 
+    sidebar.appendChild(brand);
+}
+
+export function buildSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
     // Nav
     const nav = document.createElement('nav');
     nav.className = 'sidebar__nav';
 
     const navItems = [
-        { route: '/',         label: 'Dashboard',   icon: navIcon('dashboard') },
+        { route: '/dashboard',label: 'Dashboard',   icon: navIcon('dashboard') },
         { route: '/accounts', label: 'Accounts',    icon: navIcon('accounts')  },
         { route: '/send',     label: 'Send Money',  icon: navIcon('send')      },
         { route: '/history',  label: 'History',     icon: navIcon('history')   },
@@ -68,7 +75,6 @@ function buildSidebar() {
     footer.className = 'sidebar__footer';
     footer.id = 'sidebar-footer';
 
-    sidebar.appendChild(brand);
     sidebar.appendChild(nav);
     sidebar.appendChild(footer);
 }
@@ -133,16 +139,17 @@ export function navIcon(name) {
 
 // Diese Funktion läuft DIREKT beim Laden der Seite los
 async function bootstrap() {
-    buildSidebar();
+    buildLogo()
     // Gibt es ein Token oder eine gespeicherte Customer-ID im Browser?
-    const savedCustomerId = "11111111-1111-1111-1111-111111111111"; // Test-ID
+    //const savedCustomerId = "11111111-1111-1111-1111-111111111111"; // Test-ID
+    const savedCustomerId = null
 
     if (savedCustomerId) {
         try {
-            // HIER ist die Verbindung zur API! 
+            // HIER ist die Verbindung zur API!
             // Wir holen EINMALIG beim App-Start den aktuellen Kunden vom Server.
             const customer = await getCustomerById(savedCustomerId);
-            
+
             // Wir sichern die Daten zentral im Store
             store.currentCustomer = customer;
 

@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6fe7621-620c-40af-91dc-2ffccac62b22" name="Changes" comment="">
+    <list default="true" id="a6fe7621-620c-40af-91dc-2ffccac62b22" name="Changes" comment="Login finalized, sidebar im login gesperrt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/requests/accounts.http" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/requests/accounts.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/customers/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/customers/CustomerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/customers/CustomerDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/boundary/customers/CustomerDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/customers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/customers/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/customers/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/customers/CustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/shared/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/control/shared/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/entity/customer/CustomerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoobyBank/src/main/java/com/example/boobybank/entity/customer/CustomerEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Backend-Frontend-Verknüpfnug" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +60,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Backend-Frontend-Verknüpfnug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Login-Page&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/stani/Desktop/Grundlagen der Softwareentwicklung/Challenge3/YourAppBank&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -109,11 +102,25 @@
       <workItem from="1782392139177" duration="2160000" />
       <workItem from="1782422269373" duration="3137000" />
       <workItem from="1782457983963" duration="2797000" />
-      <workItem from="1782467524711" duration="693000" />
+      <workItem from="1782467524711" duration="4497000" />
+      <workItem from="1782473701524" duration="101000" />
     </task>
+    <task id="LOCAL-00001" summary="Login finalized, sidebar im login gesperrt">
+      <option name="closed" value="true" />
+      <created>1782473582731</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1782473582731</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Login finalized, sidebar im login gesperrt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login finalized, sidebar im login gesperrt" />
   </component>
 </project>

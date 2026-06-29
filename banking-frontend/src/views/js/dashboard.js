@@ -98,7 +98,7 @@ export default class Dashboard {
             // Use accounts already in the store — no extra request needed
             let accounts = store.accounts;
             if (!accounts || accounts.length === 0) {
-                accounts = await getAllAccounts(customer?.id);
+                accounts = await getAllAccounts(customer.id);
                 store.accounts = accounts;
             }
 
