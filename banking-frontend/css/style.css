@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* =========================================================
-   Booby Bank — Design Tokens
-   Sourced directly from the Figma project's theme.css /
-   fonts.css. Variable names mirror the originals 1:1 so this
-   file can be diffed against future Figma exports.
-========================================================= */
 :root {
-  /* --- Raw tokens from theme.css (light mode) --- */
+  /* --- Raw tokens from theme.css --- */
   --background: #ffffff;
   --foreground: #0a0a0a;
   --card: #ffffff;
@@ -43,8 +37,6 @@
   --sidebar-ring: #7ec8e3;
 
   /* --- Aliases used throughout this stylesheet --- */
-  /* (kept so the rest of the CSS below doesn't need a rewrite —
-     these just point at the real tokens above) */
   --color-bg: var(--background);
   --color-sidebar: var(--sidebar);
   --color-sidebar-hover: var(--sidebar-accent);
@@ -75,7 +67,7 @@
   --fs-2xl: 38px;
   --fs-3xl: 44px;
 
-  /* Spacing scale (not defined in theme.css — kept as-is from initial build) */
+  /* Spacing scale */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -139,9 +131,8 @@ input {
   font-size: inherit;
 }
 
-/* =========================================================
-   App Shell
-========================================================= */
+   /* App Shell */
+
 .app {
   display: flex;
   min-height: 100vh;
@@ -153,9 +144,7 @@ input {
   max-width: 1600px;
 }
 
-/* =========================================================
-   Sidebar
-========================================================= */
+/* Sidebar */
 .sidebar {
   width: var(--sidebar-width);
   flex-shrink: 0;
@@ -298,9 +287,7 @@ input {
   color: var(--color-text-faint);
 }
 
-/* =========================================================
-   Page Header
-========================================================= */
+/* Page Header */
 .page-header {
   display: flex;
   justify-content: space-between;
@@ -322,9 +309,7 @@ input {
   font-size: var(--fs-base);
 }
 
-/* =========================================================
-   Buttons
-========================================================= */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -377,9 +362,7 @@ input {
   flex-shrink: 0;
 }
 
-/* =========================================================
-   Account Summary Cards (Dashboard)
-========================================================= */
+/* Dashboard */
 .account-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -444,9 +427,7 @@ input {
   color: var(--color-card-blue-text);
 }
 
-/* =========================================================
-   Quick Actions
-========================================================= */
+/* Quick Actions */
 .quick-actions {
   display: flex;
   gap: var(--space-4);
@@ -454,9 +435,7 @@ input {
   flex-wrap: wrap;
 }
 
-/* =========================================================
-   Two-column dashboard content
-========================================================= */
+/* Two-column dashboard content */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -569,9 +548,7 @@ input {
   color: var(--color-positive);
 }
 
-/* =========================================================
-   Accounts page
-========================================================= */
+/* Accounts page */
 .total-assets {
   background: var(--color-card-blue);
   border-radius: var(--radius-lg);
@@ -673,9 +650,7 @@ input {
   white-space: nowrap;
 }
 
-/* =========================================================
-   Send Money page
-========================================================= */
+/* Send Money page */
 .send-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -848,9 +823,7 @@ input {
   margin-top: 2px;
 }
 
-/* =========================================================
-   History page
-========================================================= */
+/* History page */
 
 .account-pills {
   display: flex;
@@ -935,9 +908,7 @@ input {
   padding: var(--space-5) 0;
 }
 
-/* =========================================================
-   Help Bubble (bottom-right, all pages)
-========================================================= */
+/* Help Bubble */
 .help-bubble {
   position: fixed;
   bottom: var(--space-6);
@@ -954,9 +925,7 @@ input {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* =========================================================
-   Responsive
-========================================================= */
+/* Responsive */
 @media (max-width: 1100px) {
   .account-cards {
     grid-template-columns: 1fr;
@@ -980,9 +949,7 @@ input {
   }
 }
 
-/* =========================================================
-   Utility classes referenced in views (per architecture doc)
-========================================================= */
+/* Utility classes referenced in views  */
 .text-success {
   color: var(--color-positive);
 }
@@ -997,9 +964,7 @@ input {
   50%       { opacity: 0.4; }
 }
 
-/* =========================================================
-   Support Pop-up (Modal)
-========================================================= */
+/* Support Pop-up (Modal) */
 .support-modal {
   display: none; /* Standardmäßig ausgeblendet */
   position: fixed;
