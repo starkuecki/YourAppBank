@@ -99,4 +99,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .collect(Collectors.toList());
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ProblemDetail handleIllegalArgumentException(IllegalArgumentException ex) {
+        ProblemDetail result = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        result.setTitle("Bad Request");
+        result.setDetail("Invalid request parameter: " + ex.getMessage());
+
+        return result;
+    }
+
 }

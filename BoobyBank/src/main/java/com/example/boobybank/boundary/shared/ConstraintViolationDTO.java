@@ -1,10 +1,12 @@
 package com.example.boobybank.boundary.shared;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class ConstraintViolationDTO {
 
     private final String field;
