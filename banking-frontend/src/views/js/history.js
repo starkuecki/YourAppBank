@@ -13,12 +13,18 @@ export default class History {
         this._searchInput    = null;
         this._allTx          = [];      // full unfiltered list from API
         this._activeCategory = 'All';
+        this._activeAccount = store.selectedAccount;
     }
 
     render() {
+        this._pillsAcc = el('div', { class: 'account-pills' });
+
         const header = el('div', { class: 'page-header' },
             el('h1', {}, 'History 📋'),
+            this._pillsAcc,
         );
+
+        this._renderPillsAcc();
 
         // Search bar
         const searchIcon = el('span', { class: 'search-input-wrap__icon' }, '🔍');
@@ -73,7 +79,7 @@ export default class History {
 
             const transactions = await getTransactionsByAccountIban(account.iban);
 
-            // Store full list, newest first
+            // Store full lisst, newest first
             this._allTx = [...transactions].sort(
                 (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
             );
@@ -104,6 +110,31 @@ export default class History {
         });
     }
 
+    _renderPillsAcc() {
+            this._pillsAcc.innerHTML = '';
+
+            store.accounts.forEach(acc => {
+
+
+                const accountType = acc.accountType;
+                const anzeigeName = accountType.charAt(0).toUpperCase() + accountType.slice(1);
+
+                const pillAcc = el('button',
+                    { class: `pill${acc === this._activeAccount ? ' is-active' : ''}` },
+                    anzeigeName
+                );
+
+
+                pillAcc.addEventListener('click', () => {
+                    store.selectedAccount = acc
+                    this._activeAccount = acc
+                    this.init();
+                    this._renderPillsAcc();     // re-render pills with new active state
+                });
+                this._pillsAcc.appendChild(pillAcc);
+            });
+        }
+
     _applyFilters() {
         const query = (this._searchInput?.value || '').toLowerCase();
         const cat   = this._activeCategory;
@@ -113,6 +144,7 @@ export default class History {
                 cat === 'All' ||
                 (cat === 'Deposits'    && tx.transactionType === 'deposit') ||
                 (cat === 'Withdrawals' && tx.transactionType === 'withdrawal');
+
             const description   = (tx.purpose || tx.description || '').toLowerCase();
             const matchesSearch = !query || description.includes(query);
             return matchesCat && matchesSearch;

@@ -12,11 +12,9 @@ export default class Accounts {
 
     render() {
         // Header
-        const openBtn = el('button', { class: 'btn btn--primary' }, '+ Open Account');
 
         const header = el('div', { class: 'page-header' },
             el('h1', {}, 'Your Accounts'),
-            openBtn,
         );
 
         // Total assets banner — value filled in init()
@@ -75,8 +73,6 @@ export default class Accounts {
                 window.location.hash = '#/send';
             });
 
-            const receiveBtn = el('button', { class: 'btn btn--outline btn--sm' }, '↙ Receive');
-
             // Display name — API gives "current" or "savings", we make it readable
             const displayType = acc.accountType === 'current' ? 'Current Account' : 'Savings Account';
 
@@ -94,7 +90,7 @@ export default class Accounts {
                     nameLine,
                     el('div', { class: 'account-row__iban' }, acc.iban || '—'),
                     el('div', { class: 'account-row__type' }, `${displayType} · EUR`),
-                    el('div', { class: 'account-row__actions' }, sendBtn, receiveBtn),
+                    el('div', { class: 'account-row__actions' }, sendBtn),
                 ),
                 el('div', { class: 'account-row__balance' },
                     this._formatCurrency(acc.balance ?? 0)

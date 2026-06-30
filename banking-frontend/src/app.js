@@ -8,7 +8,7 @@ import { getAllAccounts }  from './services/accountService.js';
 // The sidebar is permanent shell UI — it lives outside #app so the router
 // never wipes it. We build it once here with createElement (same rule as views).
 
-function buildLogo(){
+export function buildLogo(){
     const sidebar = document.getElementById('sidebar');
     if (!sidebar) return;
 
@@ -79,7 +79,7 @@ export function buildSidebar() {
     sidebar.appendChild(footer);
 }
 
-function updateSidebarUser() {
+export function updateSidebarUser() {
     const footer = document.getElementById('sidebar-footer');
     if (!footer) return;
     footer.innerHTML = '';
@@ -107,8 +107,22 @@ function updateSidebarUser() {
     info.appendChild(name);
     info.appendChild(plan);
 
+    // Logout-Button
+    const logoutLink = document.createElement('a');
+    logoutLink.href = '#/';
+    logoutLink.className = 'sidebar__logout';
+    logoutLink.title = 'Logout';
+
+    const logoutImg = document.createElement('img');
+    logoutImg.src = 'assets/logoutbutton.png';
+    logoutImg.alt = 'Logout';
+    logoutImg.className = 'sidebar__logout-icon';
+
+    logoutLink.appendChild(logoutImg);
+
     footer.appendChild(avatar);
     footer.appendChild(info);
+    footer.appendChild(logoutLink);
 }
 
 // ─── SVG icons (same set as before, now as helpers) ──────────────────────────
@@ -139,7 +153,6 @@ export function navIcon(name) {
 
 // Diese Funktion läuft DIREKT beim Laden der Seite los
 async function bootstrap() {
-    buildLogo()
     // Gibt es ein Token oder eine gespeicherte Customer-ID im Browser?
     //const savedCustomerId = "11111111-1111-1111-1111-111111111111"; // Test-ID
     const savedCustomerId = null

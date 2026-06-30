@@ -200,6 +200,26 @@ input {
   flex: 1;
 }
 
+.sidebar__logout {
+  margin-left: auto;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar__logout:hover {
+  opacity: 1;
+}
+
+.sidebar__logout-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
@@ -386,9 +406,9 @@ input {
   color: var(--color-text);
 }
 
-.account-card--gray {
-  background: var(--color-card-gray);
-  color: var(--color-text);
+
+.account-card--active {
+  border-inline: 4px solid var(--blue-mid);
 }
 
 .account-card__top {
@@ -828,27 +848,17 @@ input {
   margin-top: 2px;
 }
 
-.info-callout {
-  background: var(--color-accent-blue-soft);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  margin-top: var(--space-6);
-}
-
-.info-callout__title {
-  font-weight: 700;
-  margin-bottom: var(--space-3);
-}
-
-.info-callout__line {
-  font-size: var(--fs-sm);
-  color: var(--color-text);
-  margin-bottom: var(--space-1);
-}
-
 /* =========================================================
    History page
 ========================================================= */
+
+.account-pills {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
 .search-bar {
   display: flex;
   gap: var(--space-4);
