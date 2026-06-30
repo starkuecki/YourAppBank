@@ -1,10 +1,9 @@
 package com.example.boobybank.control.accounts;
 
-import com.example.boobybank.entity.accounts.AccountEntity;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
+import com.example.boobybank.entity.accounts.AccountEntity;
 
 @Component
 public class AccountMapper {

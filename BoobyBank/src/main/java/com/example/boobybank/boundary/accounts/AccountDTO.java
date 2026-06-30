@@ -1,13 +1,11 @@
 package com.example.boobybank.boundary.accounts;
 
-import com.example.boobybank.control.accounts.Transaction;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor

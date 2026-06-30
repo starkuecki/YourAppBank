@@ -63,7 +63,7 @@ class GlobalExceptionHandlerTest {
 
         ProblemDetail result = handler.handleConstraintViolationException(ex);
 
-        assertThat(result.getStatus()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY.value());
+        assertThat(result.getStatus()).isEqualTo(HttpStatus.UNPROCESSABLE_CONTENT.value());
         assertThat(result.getTitle()).isEqualTo("Unprocessable Content");
         assertThat(result.getProperties()).containsKey("violations");
 
