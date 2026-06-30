@@ -1,0 +1,1051 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* =========================================================
+   Booby Bank — Design Tokens
+   Sourced directly from the Figma project's theme.css /
+   fonts.css. Variable names mirror the originals 1:1 so this
+   file can be diffed against future Figma exports.
+========================================================= */
+:root {
+  /* --- Raw tokens from theme.css (light mode) --- */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #c8e9f8;
+  --accent-foreground: #0a0a0a;
+  --blue-light: #c8e9f8;
+  --blue-mid: #7ec8e3;
+  --blue-subtle: #eaf6fd;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --input-background: #f5f5f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #7ec8e3;
+  --radius: 0.875rem;
+
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #7ec8e3;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #7ec8e3;
+
+  /* --- Aliases used throughout this stylesheet --- */
+  /* (kept so the rest of the CSS below doesn't need a rewrite —
+     these just point at the real tokens above) */
+  --color-bg: var(--background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-hover: var(--sidebar-accent);
+  --color-sidebar-active: var(--sidebar-accent);
+  --color-text: var(--foreground);
+  --color-text-muted: var(--muted-foreground);
+  --color-text-faint: color-mix(in srgb, var(--muted-foreground) 65%, white);
+  --color-border: var(--border);
+  --color-card-dark: var(--sidebar);
+  --color-card-blue: var(--blue-light);
+  --color-card-blue-text: #2a7ca3; /* darker blue for readable text on --blue-light bg; not in source tokens */
+  --color-card-gray: var(--secondary);
+  --color-accent-blue: var(--blue-mid);
+  --color-accent-blue-soft: var(--blue-subtle);
+  --color-positive: #1f9254; /* not in source tokens — keep until provided */
+  --color-negative: var(--foreground);
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Typography */
+  --font-family: "Nunito", "Avenir Next", "Avenir", ui-rounded, system-ui, sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-base: 16px; /* matches theme.css --font-size: 16px */
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-xl: 28px;
+  --fs-2xl: 38px;
+  --fs-3xl: 44px;
+
+  /* Spacing scale (not defined in theme.css — kept as-is from initial build) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radii — derived from --radius: 0.875rem like the source @theme block does */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-pill: 999px;
+
+  /* Layout */
+  --sidebar-width: 280px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, label, button {
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+input {
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* =========================================================
+   App Shell
+========================================================= */
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-10) var(--space-12);
+  max-width: 1600px;
+}
+
+/* =========================================================
+   Sidebar
+========================================================= */
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-sidebar);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-5);
+  min-height: 100vh;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-6);
+}
+
+.sidebar__logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sidebar__brand-name {
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  color: var(--color-accent-blue);
+}
+
+.sidebar__brand-tag {
+  font-size: var(--fs-sm);
+  color: var(--color-accent-blue);
+  opacity: 0.8;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.sidebar__logout {
+  margin-left: auto;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar__logout:hover {
+  opacity: 1;
+}
+
+.sidebar__logout-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-faint);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-item:hover {
+  background: var(--color-sidebar-hover);
+  color: var(--color-white);
+}
+
+.nav-item.is-active {
+  background: var(--color-sidebar-active);
+  color: var(--color-accent-blue);
+}
+
+.nav-item__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item__label {
+  flex: 1;
+}
+
+.nav-item__chevron {
+  opacity: 0.5;
+}
+
+.sidebar__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  margin-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-accent-blue-soft);
+  color: var(--color-accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  flex-shrink: 0;
+}
+
+.sidebar__user-name {
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--color-white);
+}
+
+.sidebar__user-plan {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+.sidebar__logout {
+  margin-left: auto;
+  color: var(--color-text-faint);
+}
+
+/* =========================================================
+   Page Header
+========================================================= */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-8);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.page-header h1 {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.page-header__subtitle {
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  font-size: var(--fs-base);
+}
+
+/* =========================================================
+   Buttons
+========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  border-radius: var(--radius-pill);
+  padding: var(--space-3) var(--space-5);
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn--outline {
+  background: var(--color-white);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn--outline .btn__icon-circle {
+  background: var(--color-accent-blue-soft);
+  color: var(--color-accent-blue);
+}
+
+.btn--disabled,
+.btn:disabled {
+  background: #d6d6d6;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.btn__icon-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   Account Summary Cards (Dashboard)
+========================================================= */
+.account-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.account-card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-height: 170px;
+}
+
+.account-card--dark {
+  background: var(--color-card-dark);
+  color: var(--color-white);
+}
+
+.account-card--blue {
+  background: var(--color-card-blue);
+  color: var(--color-text);
+}
+
+
+.account-card--active {
+  border-inline: 4px solid var(--blue-mid);
+}
+
+.account-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+.account-card__balance {
+  font-size: var(--fs-3xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.account-card__change {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.account-card--dark .account-card__change,
+.account-card--gray .account-card__change {
+  color: var(--color-accent-blue);
+}
+
+.account-card--blue .account-card__change {
+  color: var(--color-card-blue-text);
+}
+
+/* =========================================================
+   Quick Actions
+========================================================= */
+.quick-actions {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   Two-column dashboard content
+========================================================= */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-5);
+}
+
+.panel__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.panel__link {
+  color: var(--color-accent-blue);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+.toggle-group {
+  display: inline-flex;
+  background: var(--color-card-gray);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+
+.toggle-group__btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.toggle-group__btn.is-active {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Transaction list (shared: dashboard "Recent" + full History page) */
+.tx-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tx-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tx-row:last-child {
+  border-bottom: none;
+}
+
+.tx-row__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-card-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.tx-row__icon--income {
+  background: var(--color-accent-blue-soft);
+  color: var(--color-accent-blue);
+}
+
+.tx-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.tx-row__title {
+  font-weight: 600;
+  font-size: var(--fs-base);
+}
+
+.tx-row__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.tx-row__amount {
+  font-weight: 700;
+  font-size: var(--fs-base);
+  white-space: nowrap;
+}
+
+.tx-row__amount--positive {
+  color: var(--color-positive);
+}
+
+/* =========================================================
+   Accounts page
+========================================================= */
+.total-assets {
+  background: var(--color-card-blue);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+.total-assets__label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-card-blue-text);
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.total-assets__value {
+  font-size: var(--fs-3xl);
+  font-weight: 600;
+  margin: var(--space-2) 0;
+}
+
+.total-assets__change {
+  color: var(--color-card-blue-text);
+  font-weight: 600;
+  font-size: var(--fs-base);
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.account-row {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.account-row__name-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.account-row__name {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.badge {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.badge--active {
+  background: #e6f6ec;
+  color: var(--color-positive);
+}
+
+.badge--apy {
+  background: var(--color-accent-blue-soft);
+  color: var(--color-accent-blue);
+}
+
+.account-row__iban {
+  color: var(--color-text-faint);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+}
+
+.account-row__type {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  margin: var(--space-1) 0 var(--space-4);
+}
+
+.account-row__actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--fs-sm);
+}
+
+.account-row__balance {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Send Money page
+========================================================= */
+.send-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.field-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.field-block {
+  margin-bottom: var(--space-6);
+}
+
+.select-box,
+.text-input {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  background: var(--color-white);
+}
+
+.text-input::placeholder {
+  color: var(--color-text-faint);
+  font-weight: 400;
+}
+
+.recipient-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.recipient-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  width: 100%;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.recipient-option:hover {
+  border-color: var(--color-accent-blue);
+}
+
+.recipient-option.is-selected {
+  border-color: var(--color-accent-blue);
+  background: var(--color-accent-blue-soft);
+}
+
+.recipient-option__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-card-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.recipient-option__name {
+  font-weight: 700;
+  font-size: var(--fs-base);
+}
+
+.recipient-option__iban {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+.amount-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+
+.amount-input-wrap .currency-prefix {
+  color: var(--color-text-faint);
+  font-size: var(--fs-lg);
+  margin-right: var(--space-2);
+}
+
+.amount-input-wrap input {
+  border: none;
+  outline: none;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  width: 100%;
+}
+
+.amount-input-wrap input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.send-submit {
+  width: 100%;
+  justify-content: center;
+  padding: var(--space-4);
+  font-size: var(--fs-base);
+}
+
+.recent-transfers {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-transfer-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recent-transfer-row:last-child {
+  border-bottom: none;
+}
+
+.recent-transfer-row__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-card-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.recent-transfer-row__body {
+  flex: 1;
+}
+
+.recent-transfer-row__name {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+
+.recent-transfer-row__date {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.recent-transfer-row__amount {
+  text-align: right;
+}
+
+.recent-transfer-row__check {
+  color: var(--color-positive);
+  font-size: var(--fs-xs);
+  margin-top: 2px;
+}
+
+/* =========================================================
+   History page
+========================================================= */
+
+.account-pills {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.search-bar {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.search-bar .text-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.search-input-wrap input {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5) var(--space-4) var(--space-10);
+  font-size: var(--fs-base);
+}
+
+.search-input-wrap__icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-faint);
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.category-pills {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.pill {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.pill.is-active {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.history-list {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--space-6);
+}
+
+.history-list .tx-row {
+  padding: var(--space-5) 0;
+}
+
+/* =========================================================
+   Help Bubble (bottom-right, all pages)
+========================================================= */
+.help-bubble {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+@media (max-width: 1100px) {
+  .account-cards {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-grid,
+  .send-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .app {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+  .main {
+    padding: var(--space-6);
+  }
+}
+
+/* =========================================================
+   Utility classes referenced in views (per architecture doc)
+========================================================= */
+.text-success {
+  color: var(--color-positive);
+}
+
+.text-danger {
+  color: var(--destructive);
+}
+
+/* Skeleton loading pulse */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* =========================================================
+   Support Pop-up (Modal)
+========================================================= */
+.support-modal {
+  display: none; /* Standardmäßig ausgeblendet */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dunkler Hintergrund-Schleier */
+  z-index: 9999; /* Ganz nach oben legen */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Wird per JavaScript hinzugefügt, um das Modal anzuzeigen */
+.support-modal.is-open {
+  display: flex;
+}
+
+.support-modal__content {
+  background: var(--color-white);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.support-modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-4);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.support-modal__close:hover {
+  color: var(--color-black);
+}
+
+@keyframes modalFadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booby Bank</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="app">
+        <!-- Permanent sidebar — built once by app.js, never touched by the router -->
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <!-- Router target — content is replaced on every navigation -->
+        <main class="main" id="app"></main>
+    </div>
+
+    <!-- Help bubble — always visible -->
+<div class="help-bubble" id="helpBtn" title="Help" style="cursor: pointer;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+             stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/>
+            <circle cx="12" cy="17" r=".5" fill="currentColor"/>
+        </svg>
+    </div>
+
+    <div class="support-modal" id="supportModal">
+        <div class="support-modal__content">
+            <button class="support-modal__close" id="closeHelpBtn">&times;</button>
+            <h2>Support & Hilfe 🎧</h2>
+            <p>Haben Sie Fragen zu Ihrem Booby Bank Konto? Unser Team ist für Sie da.</p>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--border);" />
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div><strong>📞 Telefon:</strong> +49 (0) 123 456 789</div>
+                <div><strong>✉️ E-Mail:</strong> support@boobybank.de</div>
+                <div><strong>🕒 Erreichbar:</strong> Mo - Fr, 9:00 - 18:00 Uhr</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>
