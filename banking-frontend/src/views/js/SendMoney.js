@@ -27,7 +27,7 @@ export default class SendMoney {
             this._fromSelect,
         );
 
-        // TO — recipient IBAN typed by user
+        // TO 
         this._ibanInput = el('input', {
             class: 'text-input',
             type: 'text',
@@ -59,7 +59,7 @@ export default class SendMoney {
             amountWrap,
         );
 
-        // PURPOSE / NOTE
+        // PURPOSE
         this._purposeInput = el('input', {
             class: 'text-input',
             type: 'text',
@@ -79,7 +79,7 @@ export default class SendMoney {
         this._submitBtn.disabled = true;
         this._submitBtn.addEventListener('click', () => this._handleSubmit());
 
-        // Status message — shown after submit attempt
+        // Status message
         this._statusMsg = el('p', {});
 
         const form = el('div', {},
@@ -130,7 +130,7 @@ export default class SendMoney {
         }
     }
 
-    // ─── Private helpers ─────────────────────────────────────────────────────
+    // Private helpers 
 
     async _handleSubmit() {
         const fromIban = this._fromSelect.value;

@@ -47,11 +47,11 @@ export default class History {
             filterBtn,
         );
 
-        // Category pills — built by _renderPills()
+        // Category pills 
         this._pillsEl = el('div', { class: 'category-pills' });
         this._renderPills();
 
-        // Transaction list — skeletons until init() loads real data
+        // Transaction list 
         this._listEl = el('div', { class: 'history-list' },
             this._skeleton(),
             this._skeleton(),
@@ -91,7 +91,7 @@ export default class History {
         }
     }
 
-    // ─── Private helpers ─────────────────────────────────────────────────────
+    // Private helpers 
 
     _renderPills() {
         this._pillsEl.innerHTML = '';

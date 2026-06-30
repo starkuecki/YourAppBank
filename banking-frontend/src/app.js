@@ -4,9 +4,7 @@ import store from './store.js';
 import { getCustomerById } from './services/customerService.js';
 import { getAllAccounts }  from './services/accountService.js';
 
-// ─── Sidebar ────────────────────────────────────────────────────────────────
-// The sidebar is permanent shell UI — it lives outside #app so the router
-// never wipes it. We build it once here with createElement (same rule as views).
+// Sidebar - static
 
 export function buildLogo(){
     const sidebar = document.getElementById('sidebar');
@@ -70,7 +68,7 @@ export function buildSidebar() {
         nav.appendChild(a);
     });
 
-    // Footer (user info — populated after bootstrap)
+    // Footer 
     const footer = document.createElement('div');
     footer.className = 'sidebar__footer';
     footer.id = 'sidebar-footer';
@@ -125,7 +123,7 @@ export function updateSidebarUser() {
     footer.appendChild(logoutLink);
 }
 
-// ─── SVG icons (same set as before, now as helpers) ──────────────────────────
+// SVG icons Dashboard
 
 const SVG_ICONS = {
     dashboard: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',

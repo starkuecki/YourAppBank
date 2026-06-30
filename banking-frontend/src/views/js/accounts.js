@@ -61,7 +61,7 @@ export default class Accounts {
         }
     }
 
-    // ─── Private helpers ─────────────────────────────────────────────────────
+    // Private helpers
 
     _renderList(accounts) {
         this._listEl.innerHTML = '';
@@ -73,7 +73,7 @@ export default class Accounts {
                 window.location.hash = '#/send';
             });
 
-            // Display name — API gives "current" or "savings", we make it readable
+            // Display name — API gives "current" or "savings"
             const displayType = acc.accountType === 'current' ? 'Current Account' : 'Savings Account';
 
             // Extra badge — savings accounts have interestRate, current have overdraftLimit

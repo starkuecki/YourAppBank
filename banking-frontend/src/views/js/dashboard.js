@@ -6,19 +6,16 @@ import { getAllAccounts, getTransactionsByAccountIban } from '../../services/acc
 export default class Dashboard {
 
     constructor() {
-        // We save references to nodes we'll update in init()
         this._greetName    = null;
         this._accountCards = null;
         this._recentList   = null;
         this._chartRoot    = null;
     }
 
-    // ─── render() ────────────────────────────────────────────────────────────
-    // Builds and returns the full page DOM instantly (no API calls here).
-    // Anything that needs real data shows a skeleton placeholder.
+    // Builds and returns the full page DOM instantly
 
     render() {
-        // Greeting name — we fill this in init() once we have store data
+        // Greeting name 
         this._greetName = el('span', {}, '…');
 
         const subtitle = el('p', { class: 'page-header__subtitle' },
@@ -36,14 +33,14 @@ export default class Dashboard {
             transferBtn
         );
 
-        // Account cards — skeleton until init() loads real accounts
+        // Account cards
         this._accountCards = el('section', { class: 'account-cards' },
             this._skeleton('account-card account-card--gray'),
             this._skeleton('account-card account-card--gray'),
             this._skeleton('account-card account-card--gray'),
         );
 
-        // Chart panel (left side of bottom grid)
+        // Chart panel
         this._chartRoot = el('div', { id: 'chart-root' });
 
         const chartPanel = el('div', { class: 'panel' },
@@ -53,7 +50,7 @@ export default class Dashboard {
             this._chartRoot,
         );
 
-        // Recent transactions panel (right side of bottom grid)
+        // Recent transactions panel
         this._recentList = el('div', { class: 'tx-list' },
             this._skeleton('tx-row'),
             this._skeleton('tx-row'),
@@ -83,19 +80,17 @@ export default class Dashboard {
         );
     }
 
-    // ─── init() ──────────────────────────────────────────────────────────────
-    // Runs right after render(). Fetches data and updates the DOM nodes
-    // that render() already put on screen.
+    // Fetches data and updates the DOM nodes
 
     async init() {
-        // Fill in the greeting name from the store (already loaded by app.js)
+        // Fill in the greeting name from the store 
         const customer = store.currentCustomer;
         if (customer) {
             this._greetName.textContent = customer.name?.split(' ')[0] || 'there';
         }
 
         try {
-            // Use accounts already in the store — no extra request needed
+            // Use accounts already in the store 
             let accounts = store.accounts;
             if (!accounts || accounts.length === 0) {
                 accounts = await getAllAccounts(customer.id);
@@ -123,7 +118,7 @@ export default class Dashboard {
     }
 
     async loadTransactions() {
-        // Load transactions for the primary (selected) account
+        // Load transactions for the selected account
         const primary = store.selectedAccount;
         if (primary.iban) {
             const transactions = await getTransactionsByAccountIban(primary.iban);
@@ -135,7 +130,7 @@ export default class Dashboard {
         }
     }
 
-    // ─── Private helpers ─────────────────────────────────────────────────────
+    // Private helpers 
 
     _renderAccountCards(accounts) {
         this._accountCards.innerHTML = '';
