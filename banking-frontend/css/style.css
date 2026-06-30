@@ -769,7 +769,7 @@ input {
 }
 
 .send-submit {
-  width: 75%;
+  width: 100%;
   justify-content: center;
   padding: var(--space-4);
   font-size: var(--fs-base);
@@ -831,6 +831,14 @@ input {
 /* =========================================================
    History page
 ========================================================= */
+
+.account-pills {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
 .search-bar {
   display: flex;
   gap: var(--space-4);
