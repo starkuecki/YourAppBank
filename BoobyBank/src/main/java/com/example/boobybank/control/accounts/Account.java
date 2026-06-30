@@ -25,8 +25,9 @@ public class Account {
 
     @Null(groups = OnWrite.class)
     @NotNull(groups = OnRead.class)
-    private double balance;
+    private Double balance;
 
+    @NotNull
     @Pattern(regexp = "current|savings")
     private String accountType;
 
@@ -34,6 +35,7 @@ public class Account {
     private UUID ownerId;
 
     private List<Transaction> transactions;
+
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
         if (transaction.getClass().equals(Deposit.class)) {
