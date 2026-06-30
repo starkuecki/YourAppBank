@@ -3,7 +3,6 @@ package com.example.boobybank.control.shared;
 import com.example.boobybank.control.accounts.AccountService;
 import com.example.boobybank.control.accounts.Deposit;
 import com.example.boobybank.control.accounts.Withdrawal;
-import com.example.boobybank.control.customers.Customer;
 import com.example.boobybank.control.customers.CustomerService;
 import com.example.boobybank.entity.accounts.AccountEntity;
 import com.example.boobybank.entity.accounts.AccountRepository;
@@ -16,9 +15,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.UUID;
 

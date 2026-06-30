@@ -1,8 +1,6 @@
 package com.example.boobybank.boundary.accounts;
 
-import com.example.boobybank.boundary.customers.CustomerDTO;
 import com.example.boobybank.control.accounts.*;
-import com.example.boobybank.control.customers.Customer;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +11,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController

@@ -1,18 +1,17 @@
 package com.example.boobybank.boundary.accounts;
 
-import com.example.boobybank.control.accounts.Account;
-import com.example.boobybank.control.accounts.Deposit;
-import com.example.boobybank.control.accounts.Withdrawal;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import java.util.ArrayList;
+import java.util.UUID;
+
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.UUID;
+import com.example.boobybank.control.accounts.Account;
+import com.example.boobybank.control.accounts.Deposit;
+import com.example.boobybank.control.accounts.Withdrawal;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Data
 @AllArgsConstructor

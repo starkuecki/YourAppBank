@@ -1,14 +1,10 @@
 package com.example.boobybank.control.accounts;
 
-import com.example.boobybank.boundary.accounts.TransactionDTO;
-import com.example.boobybank.control.customers.Customer;
 import com.example.boobybank.control.shared.NotFoundException;
 import com.example.boobybank.control.shared.OnWrite;
 import com.example.boobybank.entity.accounts.AccountRepository;
-import com.example.boobybank.entity.customer.CustomerRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.With;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 

@@ -1,15 +1,14 @@
 package com.example.boobybank.controlTests;
 
-import com.example.boobybank.control.accounts.Account;
-import com.example.boobybank.control.accounts.Deposit;
-import com.example.boobybank.control.accounts.Withdrawal;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+
+import com.example.boobybank.control.accounts.Account;
+import com.example.boobybank.control.accounts.Deposit;
+import com.example.boobybank.control.accounts.Withdrawal;
 
 class AccountTest {
 

@@ -1,6 +1,5 @@
 package com.example.boobybank.control.accounts;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
