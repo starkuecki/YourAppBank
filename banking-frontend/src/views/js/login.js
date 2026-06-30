@@ -2,7 +2,7 @@
 import store from '../../store.js';
 import {getAllCustomers} from '../../services/customerService.js';
 import {getAllAccounts} from "../../services/accountService.js";
-import {buildSidebar, updateSidebarUser} from "../../app.js"
+import {buildSidebar, updateSidebarUser, buildLogo} from "../../app.js"
 
 
 async function sha256(text) {
@@ -17,6 +17,9 @@ export default class Login {
     constructor() {
         this.container = null;
         store.clear();
+
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) sidebar.innerHTML = '';
     }
 
     render() {
@@ -45,6 +48,7 @@ export default class Login {
 
 
     async init() {
+        buildLogo()
         const form = this.container.querySelector('#login-form');
         const errorDiv = this.container.querySelector('#login-error');
 

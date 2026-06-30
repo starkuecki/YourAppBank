@@ -200,6 +200,26 @@ input {
   flex: 1;
 }
 
+.sidebar__logout {
+  margin-left: auto;
+  color: var(--color-text-faint);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar__logout:hover {
+  opacity: 1;
+}
+
+.sidebar__logout-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
