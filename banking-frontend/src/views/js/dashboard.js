@@ -185,94 +185,56 @@ export default class Dashboard {
             (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
         );
 
-        // Build a running balance series
+        // Build running balance series — same logic as before
         let running = 0;
-        const series = sorted.map(tx => {
-             if (tx.transactionType === 'deposit') {
-                running += tx.amount ?? 0;
+        const labels = [];
+        const values = [];
+
+        sorted.forEach(tx => {
+            if (tx.transactionType === 'deposit') {
+                running += tx.amount;
             } else {
-                running -= tx.amount ?? 0;
+                running -= tx.amount;
             }
-            running += tx.amount ?? 0;
-            return {
-                label: this._shortDate(tx.timestamp),
-                value: running,
-            };
+            labels.push(this._shortDate(tx.timestamp));
+            values.push(running);
         });
 
-        const W = 680, H = 280;
-        const pad = { top: 20, right: 20, bottom: 30, left: 50 };
-        const iW = W - pad.left - pad.right;
-        const iH = H - pad.top - pad.bottom;
+        // Create a canvas element 
+        const canvas = document.createElement('canvas');
+        //this._chartRoot.innerHTML = '';
+        this._chartRoot.appendChild(canvas);
 
-        const values = series.map(d => d.value);
-        const minV   = Math.min(...values);
-        const maxV   = Math.max(...values);
-        const range  = maxV - minV || 1;
-
-        const pts = series.map((d, i) => ({
-            x: pad.left + (i / (series.length - 1 || 1)) * iW,
-            y: pad.top + iH - ((d.value - minV) / range) * iH,
-            label: d.label,
-        }));
-
-        const linePath = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
-        const areaPath = `${linePath} L ${pts.at(-1).x} ${pad.top + iH} L ${pts[0].x} ${pad.top + iH} Z`;
-
-        const NS  = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(NS, 'svg');
-        svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-        svg.setAttribute('width',  '100%');
-        svg.setAttribute('height', 'auto');
-
-        // Gradient fill under the line
-        const defs  = document.createElementNS(NS, 'defs');
-        const grad  = document.createElementNS(NS, 'linearGradient');
-        grad.id = 'areaFill';
-        grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
-        grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
-        const s1 = document.createElementNS(NS, 'stop');
-        s1.setAttribute('offset', '0%');
-        s1.setAttribute('stop-color', 'var(--blue-mid)');
-        s1.setAttribute('stop-opacity', '0.3');
-        const s2 = document.createElementNS(NS, 'stop');
-        s2.setAttribute('offset', '100%');
-        s2.setAttribute('stop-color', 'var(--blue-mid)');
-        s2.setAttribute('stop-opacity', '0');
-        grad.appendChild(s1); grad.appendChild(s2);
-        defs.appendChild(grad);
-        svg.appendChild(defs);
-
-        const area = document.createElementNS(NS, 'path');
-        area.setAttribute('d', areaPath);
-        area.setAttribute('fill', 'url(#areaFill)');
-        svg.appendChild(area);
-
-        const line = document.createElementNS(NS, 'path');
-        line.setAttribute('d', linePath);
-        line.setAttribute('fill', 'none');
-        line.setAttribute('stroke', 'var(--blue-mid)');
-        line.setAttribute('stroke-width', '2.5');
-        svg.appendChild(line);
-
-        // X-axis labels
-        const step = Math.max(1, Math.floor(pts.length / 6));
-        pts.forEach((p, i) => {
-            if (i % step !== 0 && i !== pts.length - 1) return;
-            const t = document.createElementNS(NS, 'text');
-            t.setAttribute('x', p.x);
-            t.setAttribute('y', H - 6);
-            t.setAttribute('font-size', '11');
-            t.setAttribute('fill', 'var(--muted-foreground)');
-            t.setAttribute('text-anchor', 'middle');
-            t.textContent = p.label;
-            svg.appendChild(t);
+        // One call — Chart.js does all the rest
+        new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    borderColor: 'var(--blue-mid)',
+                    backgroundColor: 'rgba(126, 200, 227, 0.15)',
+                    fill: true,
+                    tension: 0.4,        
+                    pointRadius: 2.5,
+                    borderWidth: 1.5,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: value => `$${value.toFixed(0)}`
+                        }
+                    }
+                }
+            }
         });
-
-
-        this._chartRoot.appendChild(svg);
     }
-
     // Builds a single transaction row 
     _txRow(tx) {
         const isIncome = tx.transactionType === 'deposit';
