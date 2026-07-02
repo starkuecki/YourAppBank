@@ -40,7 +40,7 @@ public class DataInitializer {
         CustomerEntity customerEntity1 = new CustomerEntity(
                 UUID.fromString("11111111-1111-1111-1111-111111111111"),
                 "Tim",
-                "Beispielstadt1",
+                "Hamburg",
                 hasher.sha256("1")
         );
         cRepo.save(customerEntity1);
@@ -57,8 +57,8 @@ public class DataInitializer {
         accountService.deposit(
                 "DE10000000000000000001",
                 new Deposit(
-                        100.0,
-                        "Einzahlungsbeispiel1",
+                        350.0,
+                        "Gehalt vom Minijob",
                         "2026-06-25T23:33:00.000Z",
                         "deposit"
                 )
@@ -68,7 +68,7 @@ public class DataInitializer {
                 "DE10000000000000000001",
                 new Withdrawal(
                         10.0,
-                        "Auszahlungsbeispiel1",
+                        "Wocheneinkauf",
                         "2026-06-25T23:34:00.000Z",
                         "withdrawal"
                 )
@@ -78,7 +78,7 @@ public class DataInitializer {
                 "DE10000000000000000001",
                 new Deposit(
                         50.0,
-                        "Einzahlungsbeispiel2",
+                        "Taschengeld von Oma",
                         "2026-06-25T23:35:00.000Z",
                         "deposit"
                 )
@@ -87,8 +87,8 @@ public class DataInitializer {
         accountService.withdrawal(
                 "DE10000000000000000001",
                 new Withdrawal(
-                        30.0,
-                        "Auszahlungsbeispiel2",
+                        130.0,
+                        "Neuer Fernseher",
                         "2026-06-25T23:36:00.000Z",
                         "withdrawal"
                 )
@@ -111,7 +111,7 @@ public class DataInitializer {
         CustomerEntity customerEntity2 = new CustomerEntity(
                 UUID.fromString("22222222-2222-2222-2222-222222222222"),
                 "Tom",
-                "Beispielstadt2",
+                "Harburg",
                 hasher.sha256("2")
         );
         cRepo.save(customerEntity2);
@@ -129,7 +129,7 @@ public class DataInitializer {
                 "DE20000000000000000001",
                 new Deposit(
                         12.0,
-                        "Einzahlungsbeispiel1",
+                        "Taschengeld von Oma",
                         "2026-06-25T23:33:00.000Z",
                         "deposit"
                 )
@@ -138,8 +138,8 @@ public class DataInitializer {
         accountService.withdrawal(
                 "DE20000000000000000001",
                 new Withdrawal(
-                        1.0,
-                        "Auszahlungsbeispiel1",
+                        3.0,
+                        "Eis",
                         "2026-06-25T23:34:00.000Z",
                         "withdrawal"
                 )
@@ -148,8 +148,8 @@ public class DataInitializer {
         accountService.deposit(
                 "DE20000000000000000001",
                 new Deposit(
-                        3.0,
-                        "Einzahlungsbeispiel2",
+                        8.0,
+                        "Verkauf von Schrauben",
                         "2026-06-25T23:35:00.000Z",
                         "deposit"
                 )
@@ -158,8 +158,8 @@ public class DataInitializer {
         accountService.withdrawal(
                 "DE20000000000000000001",
                 new Withdrawal(
-                        2.0,
-                        "Auszahlungsbeispiel2",
+                        7.0,
+                        "Döner",
                         "2026-06-25T23:36:00.000Z",
                         "withdrawal"
                 )
